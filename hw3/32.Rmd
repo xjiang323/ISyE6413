@@ -1,0 +1,21 @@
+---
+title: "hw3 p32"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r}
+data <- read.table("throughput.dat", header = TRUE)
+data$Day <- as.factor(data$Day)
+data$Operator <- as.factor(data$Operator)
+model <- lm(data$Throughput ~ data$Day + data$Operator + data$Machine + data$Method)
+anova(model)
+```
+```{r}
+mean(data[data$Method == 'A',]$Throughput)
+mean(data[data$Method == 'B',]$Throughput)
+mean(data[data$Method == 'C',]$Throughput)
+mean(data[data$Method == 'D',]$Throughput)
+mean(data[data$Method == 'E',]$Throughput)
+```
